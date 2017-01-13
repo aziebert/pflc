@@ -31,7 +31,8 @@ if (file==1){
 	if(fgets(line,sizeof line,sFile) != NULL){
 		word=strtok(line,",");
 		for(i=0;i<10;i++){ word=strtok(NULL,","); }
-		if (strcmp(word,"MsBetweenPresents")==0){format=1;} 			
+		if (strcmp(word,"MsBetweenPresents")==0){format=1;}
+		else{printf("This is not a Presentmon log...\n");}
 		}
 }
 
@@ -48,8 +49,8 @@ if(file==1&format==1){
 	dFile=fopen(filename,"w");	
 	
 	printf ("Writing file: %s\n\n",filename);
-	//printf("Frame, Time (ms)\n");	
-	fputs("Frame, Time (ms)",dFile);		
+	//printf("Frame, Time (ms)\n");
+	fprintf(dFile,"Frame, Time (ms)\n");
 	
 	while (fgets(line,sizeof line,sFile)	!= NULL){
 		word=strtok(line,",");
